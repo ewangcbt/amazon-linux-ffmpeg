@@ -43,8 +43,9 @@ rm -rf yasm-1.2.0
 wget http://www.tortall.net/projects/yasm/releases/yasm-1.2.0.tar.gz
 tar xzfv yasm-1.2.0.tar.gz && rm -f yasm-1.2.0.tar.gz
 cd yasm-1.2.0
-./configure --prefix="$HOME/ffmpeg_build" --bindir="$HOME/bin" && make install
-export "PATH=$PATH:$HOME/bin" 
+./configure --prefix="$HOME/ffmpeg_build" --bindir="$HOME/bin"
+make
+make install
 
 cd /opt
 rm -rf nasm-2.13.01
