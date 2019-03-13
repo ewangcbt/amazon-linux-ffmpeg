@@ -11,11 +11,7 @@ if [ "`/usr/bin/whoami`" != "root" ]; then
 fi
 
 yum -y update
-<<<<<<< HEAD:build_ffmpeg.sh
 yum -y install wget 
-=======
-yum -y install cmp
->>>>>>> 2dc76c597b063a173cb56473af70d26889fe4b43:run.sh
 yum -y install glibc gcc gcc-c++ autoconf automake libtool git make nasm pkgconfig
 yum -y install SDL-devel a52dec a52dec-devel alsa-lib-devel faac faac-devel faad2 faad2-devel
 yum -y install freetype-devel giflib gsm gsm-devel imlib2 imlib2-devel lame lame-devel libICE-devel libSM-devel libX11-devel
@@ -109,6 +105,21 @@ make
 ./configure --bindir="$HOME/bin" --enable-static 
 make
 make install
+
+cd /opt
+mkdir mediaarea
+cd mediaarea
+wget https://mediaarea.net/download/binary/libzen0/0.4.37/libzen-0.4.37.x86_64.CentOS_6.rpm
+wget https://mediaarea.net/download/binary/libmediainfo0/18.12/libmediainfo-18.12.x86_64.CentOS_6.rpm
+wget https://mediaarea.net/download/binary/mediainfo/18.12/mediainfo-18.12.x86_64.CentOS_6.rpm
+
+rpm -ivh libzen-0.4.37.x86_64.CentOS_6.rpm
+rpm -ivh libmediainfo-18.12.x86_64.CentOS_6.rpm
+rpm -ivh mediainfo-18.12.x86_64.CentOS_6.rpm
+cd /opt
+rm -rf mediaarea
+
+cp /usr/bin/mediainfo $HOME/bin/
 
 cd $HOME
 tar -cvf bin.tar ./bin
