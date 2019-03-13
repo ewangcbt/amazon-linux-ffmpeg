@@ -27,16 +27,16 @@
 # Example: $OGGENCODE="oggenc -Q -b %b -o %m %w"
 
 $MP3DECODE  = " -q -o %w %m";
-$MP3ENCODE  = "lame --quiet -h -b %b %w %m";
-$OGGDECODE  = "oggdec -Q -o %w %m";
-$OGGENCODE  = "oggenc -Q -b %b -o %m %w";
-$FLACDECODE = "flac -s -d -o %w %m";
-$FLACENCODE = "flac -s -o %m %w";
+$MP3ENCODE  = " -quiet %w %m";
+$OGGDECODE  = " -q -d wav -f %w %m";
+$OGGENCODE  = "";
+$FLACDECODE = "";
+$FLACENCODE = "";
 
 # The %w etc. substitutions should *not* be used in the following, as
 # this script knows about their options already.
-$VORBISCOMMENT = "vorbiscomment";
-$METAFLAC      = "metaflac";
+$VORBISCOMMENT = "";
+$METAFLAC      = "";
 
 # change this if normalize is not on your path
 $NORMALIZE = "normalize";
