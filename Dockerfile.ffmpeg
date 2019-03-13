@@ -1,0 +1,13 @@
+# This container provides a lean container for running Node apps
+
+FROM amazonlinux:2017.03
+
+MAINTAINER devops@cbtnuggets.com
+
+WORKDIR /root/
+RUN mkdir /root/bin/
+RUN mkdir /root/build/
+
+COPY ./build_ffmpeg.sh /root/
+
+RUN sh build_ffmpeg.sh 

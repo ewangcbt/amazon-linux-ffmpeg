@@ -11,15 +11,13 @@ if [ "`/usr/bin/whoami`" != "root" ]; then
 fi
 
 yum -y update
+yum -y install wget 
 yum -y install glibc gcc gcc-c++ autoconf automake libtool git make nasm pkgconfig
 yum -y install SDL-devel a52dec a52dec-devel alsa-lib-devel faac faac-devel faad2 faad2-devel
 yum -y install freetype-devel giflib gsm gsm-devel imlib2 imlib2-devel lame lame-devel libICE-devel libSM-devel libX11-devel
 yum -y install libXau-devel libXdmcp-devel libXext-devel libXrandr-devel libXrender-devel libXt-devel
 yum -y install libogg libvorbis vorbis-tools mesa-libGL-devel mesa-libGLU-devel xorg-x11-proto-devel zlib-devel
-yum -y install libtheora theora-tools
 yum -y install ncurses-devel
-yum -y install libdc1394 libdc1394-devel
-yum -y install amrnb-devel amrwb-devel opencore-amr-devel
 
 cd /opt
 rm -rf fdk-aac
@@ -89,5 +87,24 @@ PKG_CONFIG_PATH="$HOME/ffmpeg_build/lib/pkgconfig" ./configure --prefix="$HOME/f
 make
 make install
 
-cp $HOME/bin/ffmpeg /usr/bin/
-cp $HOME/bin/ffprobe /usr/bin/
+cd /opt
+rm -rf normalize-0.7.7.tar.gz normalize-0.7.7
+wget http://savannah.nongnu.org/download/normalize/normalize-0.7.7.tar.gz
+tar xzfv normalize-0.7.7.tar.gz && rm -f normalize-0.7.7.tar.gz
+cd normalize-0.7.7
+./configure --bindir="$HOME/bin" --enable-static 
+make
+make install
+
+cd /opt
+rm -rf soundtouch
+git clone https://gitlab.com/soundtouch/soundtouch.git
+cd soundtouch/
+./bootstrap 
+make
+./configure --bindir="$HOME/bin" --enable-static 
+make
+make install
+
+cd $HOME
+tar -cvf bin.tar ./bin
