@@ -112,13 +112,11 @@ cd mediaarea
 wget https://mediaarea.net/download/binary/libzen0/0.4.37/libzen-0.4.37.x86_64.CentOS_6.rpm
 wget https://mediaarea.net/download/binary/libmediainfo0/18.12/libmediainfo-18.12.x86_64.CentOS_6.rpm
 wget https://mediaarea.net/download/binary/mediainfo/18.12/mediainfo-18.12.x86_64.CentOS_6.rpm
-
 rpm -ivh libzen-0.4.37.x86_64.CentOS_6.rpm
 rpm -ivh libmediainfo-18.12.x86_64.CentOS_6.rpm
 rpm -ivh mediainfo-18.12.x86_64.CentOS_6.rpm
 cd /opt
 rm -rf mediaarea
-
 cp /usr/bin/mediainfo $HOME/bin/
 
 cd $HOME
