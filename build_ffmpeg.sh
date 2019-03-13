@@ -11,7 +11,11 @@ if [ "`/usr/bin/whoami`" != "root" ]; then
 fi
 
 yum -y update
+<<<<<<< HEAD:build_ffmpeg.sh
 yum -y install wget 
+=======
+yum -y install cmp
+>>>>>>> 2dc76c597b063a173cb56473af70d26889fe4b43:run.sh
 yum -y install glibc gcc gcc-c++ autoconf automake libtool git make nasm pkgconfig
 yum -y install SDL-devel a52dec a52dec-devel alsa-lib-devel faac faac-devel faad2 faad2-devel
 yum -y install freetype-devel giflib gsm gsm-devel imlib2 imlib2-devel lame lame-devel libICE-devel libSM-devel libX11-devel
